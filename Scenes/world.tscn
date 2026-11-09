@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bwcso8w1ytv3v" path="res://Models/Nature/Grass_Wispy_Short.gltf" id="25_04jkj"]
 [ext_resource type="PackedScene" uid="uid://wnedtcwu4g13" path="res://Models/Nature/Grass_Wispy_Tall.gltf" id="26_lkcvt"]
 [ext_resource type="Texture2D" uid="uid://urj48darupay" path="res://Skybox/sky_60_2k.png" id="27_hmc15"]
+[ext_resource type="Script" uid="uid://cm31cud24ggnv" path="res://Scripts/player_controller.gd" id="28_dt0r1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5esyd"]
 panorama = ExtResource("27_hmc15")
@@ -46,6 +47,10 @@ volumetric_fog_sky_affect = 0.7
 adjustment_enabled = true
 adjustment_contrast = 1.1
 adjustment_saturation = 1.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wdat"]
+radius = 0.2
+height = 1.8
 
 [node name="Main" type="Node3D" unique_id=1846424752]
 
@@ -351,12 +356,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.301903, 0.8534081, 4.81790
 [node name="Grass_Wispy_Tall2" parent="Nature/Details" unique_id=1180639196 instance=ExtResource("26_lkcvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0596895, 0.8384299, 1.0389783)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1363800131]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75225, 2.216887, 11.580309)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1014044383]
 transform = Transform3D(0.9587943, 0.18472351, -0.21584873, 0.07924188, 0.5557256, 0.82758075, 0.27282625, -0.81058395, 0.51818866, 7.75225, 13.233326, 11.580309)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=947659720]
 environment = SubResource("Environment_3wdat")
+
+[node name="PlayerController" type="CharacterBody3D" parent="." unique_id=1300785983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3207984, -0.12792909, 1.8580912)
+script = ExtResource("28_dt0r1")
+braking = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerController" unique_id=911901518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_3wdat")
+debug_color = Color(0, 0.6196533, 0.720634, 0.84313726)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerController" unique_id=1363800131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
