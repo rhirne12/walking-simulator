@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bo7diemajvf7m"]
+
+[ext_resource type="PackedScene" uid="uid://bs1odwst6uvks" path="res://Models/Nature/Rock_Medium_3.gltf" id="1_rlb0x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wdat"]
+size = Vector3(2.7413158, 1.4581146, 2.8182144)
+
+[node name="Rock_2" type="StaticBody3D" unique_id=636259669]
+
+[node name="Rock_Medium_32" parent="." unique_id=1149331628 instance=ExtResource("1_rlb0x")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=747664302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2377615, 0.99556744, 0.82031834)
+shape = SubResource("BoxShape3D_3wdat")

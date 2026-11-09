@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c56fapneh7i67"]
+
+[ext_resource type="PackedScene" uid="uid://c73ip44xox66p" path="res://Models/Nature/CommonTree_1.gltf" id="1_27g1u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wdat"]
+radius = 0.47314453
+height = 6.9311523
+
+[node name="Tree_1" type="StaticBody3D" unique_id=1600162629]
+
+[node name="CommonTree_12" parent="." unique_id=1409137315 instance=ExtResource("1_27g1u")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=309133138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.435791, 0.1047523)
+shape = SubResource("CapsuleShape3D_3wdat")
